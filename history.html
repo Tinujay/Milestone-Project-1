@@ -5,46 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History-Trivia</title>
     <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="history.css">
 </head>
+
 <body>
     <h1 class="title">History Trivia</h1>
 
-    <div class="quiz-container">
-        <div class="questions">
-            <h2 class="question"></h2>
-            <ol type="A">
-                <li class="option"><span id="option0" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option1" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option2" onclick="calcScore(this)"></span></li>
-                <li class="option"><span id="option3" onclick="calcScore(this)"></span></li>
-            </ol>
-            <h4 id="stat"></h4>
+    <div class="container">
+        <div id="game">
+            <div id="corner">
+                <div class="corner-item">
+                    <p id="progressText" class="hud-prefix">
+                        Question
+                    </p>
+                    <div id="progressBar">
+                        <div id="progressBarFull"></div>
+                    </div>
+                </div>
+                <div class="hud-item">
+                    <p class="hud-prefix">
+                        Score
+                    </p>
+                    <h1 class="hud-main-text" id="score">
+                        0
+                    </h1>
+                </div>
+            </div>
+            <h1 id="question">What is the answer?</h1>
+            <div class="choice-container">
+                <p class="choice-prefix">A</p>
+                <p class="choice-txt" data-number="1">Choice1</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">B</p>
+                <p class="choice-txt" data-number="2">Choice2</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">C</p>
+                <p class="choice-txt" data-number="3">Choice3</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">D</p>
+                <p class="choice-txt" data-number="4">Choice4</p>
+            </div>
         </div>
-
-        <div class="buttons">
-            <button type="button" class="next">Next</button>
-        </div>
-
     </div>
 
-    <!-- scoreboard section -->
-    <div id="scoreboard">
-        <h2 id="score-title">Your Score</h2>
-        <h2 id="score"></h2>
-        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
-        <button type="button" id="check-answer" onclick="checkAnswer()">Check Answers</button>
-    </div>
-
-    <!-- answers section -->
-    <div id="answerBank">
-        <h2>Answers :</h2>
-        <ol type="1" id="answers">
-
-        </ol>
-        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
-    </div>
-
-    <!-- javascript file source -->
-    <script src="/questions.js"></script>
+    <script src="game.js"></script>
+      
 </body>
 </html>
