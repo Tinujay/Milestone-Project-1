@@ -1,81 +1,38 @@
-<!--HTMl to create tage like h1, <input>, <form - main heading, quix form, and answer choices>
-    CSS - to style the game, background imaging and colors, font, color, images  
-    Javascript - add interactivity, functions for displaying questions and answers, keeping track of user's score. and providing feedback for each answer
-    Test the game, 
-    The game should have a Readme.md file in the GitHub repository that describes the inspiration for the game, explains the 
-    controls and how to play the game, lists the technologies used to build the game, and addresses any outstanding bugs 
-    or unfinished functionality
-    Use console.log, alert, breakpoints, the inspector, and the debugger to get a glimpse of what's going on in your code. Know where 
-    to look to find errors and get used to interpreting common ones!
--->
-
-
 <!DOCTYPE html>
 <html>
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <link href="style.css" rel="stylesheet" type="text/css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+
     
     <title>Trivia Game</title>
+
 </head>
 
 <body>
-    <div class="title">
-        <h1 class="trivia-title">Welcome to Trivia Game!</h1>
+
+    <div class="title-container">
+        <h1 class="trivia-title">TRIVIA-TIZED</h1>
     </div>  
-    <hr>
-    <br>
 
-    <div class="howto">
-        <h2 class="howitworks">How It Works</h2>
-        <p><b>Choose from any of the 6 category below and complete 10 trivia quizzes. Think Fast! You only have 10 seconds to answer each question</b></p>
+    
+    <div class="howto-container">
+        <div class="h1-container">
+            <h2 class="howitworks"><u>How It Works:</u></h2>
+            <p>Choose from any of the 6 category below and complete 10 trivia quizzes. Think Fast! You only have 10 seconds to answer each question</p>
+        </div>
     </div>
-    <br>
-
-
-    <h2 class="getstarted">Let's get started!</h2>
-    <br>
-    <br>
- 
-    <h1 class="category">Category</h1>
-
-
-
+<!--edit the how to play part-->
 
     <div class="container">
-    <nav>
-        <ul class="">
-             <li>
-                <h2>History</h2>
-                <img src="https://img.huffingtonpost.com/asset/5d036dd92100009518f2fd9e.jpeg?ops=scalefit_720_noupscale">  
+        <img src="https://hms.harvard.edu/sites/default/files/media/850DNA-brain-GettyImages-940458246.jpg"><!--took image from google-->
                     <br>
-                <a href="/history.html"><button id="bttn">Play</button></a>
-            </li>
-
-            <li><a href="https://www.triviaplaza.com/pop-music-categories/">
-            <img src="https://hms.harvard.edu/sites/default/files/media/850DNA-brain-GettyImages-940458246.jpg">  
-            <h2>Science</h2></a></li>
-
-             <li><a href="https://www.triviaplaza.com/pop-music-categories/">
-            <img src="https://www.gannett-cdn.com/-mm-/83e081eae80cd2848af52df6da1060d621468f19/c=0-111-2120-1303/local/-/media/2021/04/25/USATODAY/usatsports/red-movie-theater-seats.jpg?width=1600&height=800&fit=crop&format=pjpg&auto=webp">  
-            <h2>Movies</h2></a></li>
-
-            <li><a href="https://www.triviaplaza.com/pop-music-categories/">
-            <img src="https://www.webex.com/content/dam/wbx/us/images/rebrand/sport-hero.jpg">  
-            <h2>Sports</h2></a></li>
-
-            <li><a href="https://www.triviaplaza.com/pop-music-categories/">
-            <img src="https://macdndev.azureedge.net/genesis-temp/5/b/b/f/2/e/5bbf2e37645d9f9b29464671b0b407f62535e556.jpg">  
-            <h2>Music</h2></a></li>
-
-            <li><a href="https://www.triviaplaza.com/pop-music-categories/">
-             <img src="https://www.incimages.com/uploaded_files/image/1024x576/getty_160382211_200013722000928071_102768.jpg">  
-            <h2>Basic Knowledge</h2></a></li>
-        </ul>
-    </nav>
+                    <br>
+        <a href="/history.html"><button id="bttn">Play</button></a>
     </div>
