@@ -1,5 +1,13 @@
 body {
-    background-color: rgb(17, 107, 176);
+    background-image: url('./gradienta-m_7p45JfXQo-unsplash.jpg');
+    background-position: left;
+    background-attachment: fixed;
+}
+
+.trivia-title {
+    font-family: 'Nabla', cursive;
+    font-size: 60px;
+    margin: auto;
 }
 
 .choice-container {

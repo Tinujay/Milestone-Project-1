@@ -3,55 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History-Trivia</title>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="history.css">
+    <link href="game.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+
+
+    <title>Trivia Game</title>
+
 </head>
 
 <body>
-    <h1 class="title">History Trivia</h1>
+    <div class="title-container">
+        <h1 class="trivia-title" id="triviatitle">TRIVIA-TIZED</h1>
+    </div>  
 
-    <div class="container">
-        <div id="game">
-            <div id="corner">
-                <div class="corner-item">
-                    <p id="progressText" class="hud-prefix">
-                        Question
-                    </p>
-                    <div id="progressBar">
-                        <div id="progressBarFull"></div>
-                    </div>
-                </div>
-                <div class="hud-item">
-                    <p class="hud-prefix">
-                        Score
-                    </p>
-                    <h1 class="hud-main-text" id="score">
-                        0
-                    </h1>
-                </div>
+    <div id="container">
+        <div id="gameContainer">
+
+        <div id="cornerItems">
+
+            <div class="corner">
+              <p id="questionText" class="hud-prefix">Question</p>
+              <div id="progressBar">
+                <div id="progressBarFull"></div>
+              </div>
             </div>
-            <h1 id="question">What is the answer?</h1>
-            <div class="choice-container">
-                <p class="choice-prefix">A</p>
-                <p class="choice-txt" data-number="1">Choice1</p>
+
+            <div class="scoreContainer">
+              <p class="scoreText">Score</p>
+              <h1 class="scoreNumber" id="score">0</h1>
             </div>
-            <div class="choice-container">
-                <p class="choice-prefix">B</p>
-                <p class="choice-txt" data-number="2">Choice2</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">C</p>
-                <p class="choice-txt" data-number="3">Choice3</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">D</p>
-                <p class="choice-txt" data-number="4">Choice4</p>
-            </div>
+          
         </div>
-    </div>
 
+        <div class="question box">
+          <h1 id="question">What is the answer?</h1>
+        </div>
+          
+        <div class="choice-container">
+            <p class="choice-prefix">A</p>
+            <p class="choice-txt" data-number="1">Choice1</p>
+          </div>
+          <div class="choice-container">
+            <p class="choice-prefix">B</p>
+            <p class="choice-txt" data-number="2">Choice2</p>
+          </div>
+          <div class="choice-container">
+            <p class="choice-prefix">C</p>
+            <p class="choice-txt" data-number="3">Choice3</p>
+          </div>
+          <div class="choice-container">
+            <p class="choice-prefix">D</p>
+            <p class="choice-txt" data-number="4">Choice4</p>
+          </div>
+        </div>
+      </div>
+      
     <script src="game.js"></script>
       
 </body>
 </html>
+
+
+
+<!--The outermost element is a div with the class "container", which contains the main content of the game.
+Inside the container, there is another div element with the ID "game", which contains the main elements of the quiz game. 
+Within this element, there is a div element with the ID "corner", which contains two div elements with the 
+class "corner-item". These corner items contain text and a progress bar.
+
+There is also an h1 element with the ID "question", which contains the text for the current quiz question.
+Below the question, there are several div elements with the class "choice-container", 
+which contain text elements with the class "choice-prefix" and "choice-txt". 
+These are the possible answers to the quiz question. -->
