@@ -66,8 +66,8 @@ choices.forEach(choice => {
       let selectedChoice = event.target.innerText;
       if (selectedChoice === currentQuestion.correctChoice) {
         choice.classList.add('correct');
-        // proceed to the next question
-        nextQuestion();
+        setTimeout(nextQuestion, 1000);
+        // proceed to the next question after 1 sec
       } else {
         // highlight the choice in red for incorrect answer
         choice.classList.add('incorrect');
