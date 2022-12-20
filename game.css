@@ -2,6 +2,8 @@ body {
     background-image: url('./gradienta-m_7p45JfXQo-unsplash.jpg');
     background-position: left;
     background-attachment: fixed;
+    max-width: 1000px;
+
 }
 
 .trivia-title {
@@ -16,9 +18,12 @@ body {
     border: 5px solid rgb(86, 52, 224);
     border: 5px solid rgb(247, 246, 250);
     padding: 50px;
-    box-shadow: 10px 10px 5px 0px rgba(113, 117, 241, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(94, 97, 187, 0.75);
     border-radius: 10px;
     text-align: center;
+    min-width: 20rem;
+    max-width: 20rem;
+    background-color: rgba(2, 15, 53, 0.799);
   }
   
   #container {
@@ -36,6 +41,8 @@ body {
   .choice-container {
     text-align: center;
     width: 90%;
+    max-width: 10rem;
+    min-width: 10rem;
     background-color: rgb(223, 92, 197);
     margin-bottom: 0.9rem;
     border-radius: 10px;
@@ -68,8 +75,11 @@ h1 {
 }
 
 .scoreContainer {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right:130px;
+    top: 40px;
+    
+    
   }
 
 
@@ -84,11 +94,11 @@ h1 {
 
 #timer {
     position: absolute;
-    top: 30%; 
+    top: 25%; 
     left: 30%; 
     transform: translate(-50%, -50%); 
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: azure;
     padding-right: 3rem;
     padding-bottom: 5rem;
