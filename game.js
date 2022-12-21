@@ -108,8 +108,6 @@ let currentQuestion = questions[currentQuestionIndex];
 let timerInterval;
 
 function displayQuestion() {
-  choices.forEach(choice =>
-    choice.classList.remove('incorrect'));
     question.innerText = currentQuestion.question;
     choices.forEach(choice => {
     let number = choice.dataset['number'];
@@ -125,7 +123,6 @@ function displayQuestion() {
       nextQuestion(); // proceed to the next question
     }
   }, 1000); // run the timer function every 1 second
-
 }
 displayQuestion()
 
@@ -135,10 +132,10 @@ displayQuestion()
 function nextQuestion() {
   clearInterval(timerInterval); // stop the timer
   choices.forEach(choice => {
-  choice.classList.remove('incorrect');
-  choice.classList.remove('correct');
-  }); // clear the incorrect class from the choices
-  document.querySelector('#result').innerText = ""; // clear the incorrect/correct result text
+    choice.classList.remove('incorrect');
+    choice.classList.remove('correct');
+  }); // clear the incorrect and correct class from the choices
+  document.querySelector('#result').innerText = ""; // clears the incorrect/correct result text in the next question 
   currentQuestionIndex++; // increment the current question index
   currentQuestion = questions[currentQuestionIndex];
   if (currentQuestionIndex < questions.length) {
@@ -156,7 +153,7 @@ choices.forEach(choice => {
   choice.addEventListener('click', event => {
     let selectedChoice = choice.innerText;
     if (selectedChoice === currentQuestion.correctChoice) {
-      choice.classList.add('correct');
+      choice.classList.add('correct'); //highlights choice in green 
       document.querySelector('#result').innerText = "Correct!";
       score = Number(score); // convert score to a number
       score += 10; // add 10 points to the score
@@ -165,8 +162,7 @@ choices.forEach(choice => {
         nextQuestion(); // proceed to the next question with a delay
       }, 1000);
     } else {
-      // highlight the choice in red for incorrect answer
-      choice.classList.add('incorrect');
+      choice.classList.add('incorrect'); // highlight the choice in red for incorrect answer
       document.querySelector('#result').innerText = "Incorrect!";
       score = Number(score); // convert score to a number
       score -= 5; // subtract 10 points from the score
@@ -185,30 +181,3 @@ function gameOver() {
     });
   }
   
-
-
-
-
-
-        
-
-  
-
-
-
-
-
-      
-
-  
-  
-
-
-
-
-
-
-
-
-
-
