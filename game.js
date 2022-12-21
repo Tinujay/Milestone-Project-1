@@ -96,6 +96,8 @@ const time = document.querySelector('#timer');
 const scoreNumber = document.querySelector('.scoreNumber');
 const gameOverScreen = document.querySelector('#game-over');
 const finalScore = document.querySelector('#final-score');
+const restartButton = document.querySelector('#restart-button');
+
 
 
 let currentQuestion = questions[currentQuestionIndex];
@@ -130,7 +132,6 @@ displayQuestion()
 
 
 
-
 function nextQuestion() {
   clearInterval(timerInterval); // stop the timer
   choices.forEach(choice => {
@@ -144,11 +145,12 @@ function nextQuestion() {
     // if there are more questions, display the next question
     displayQuestion();
   } else {
-    // if there are no more questions, show the game over screen
-    gameOverScreen.classList.remove('d-none');
-    finalScore.innerText = score;
+    gameOver() // if there are no more questions, show the game over screen
   }
 }
+
+
+
 
 choices.forEach(choice => {  
   choice.addEventListener('click', event => {
@@ -167,7 +169,7 @@ choices.forEach(choice => {
       choice.classList.add('incorrect');
       document.querySelector('#result').innerText = "Incorrect!";
       score = Number(score); // convert score to a number
-      score -= 10; // subtract 10 points from the score
+      score -= 5; // subtract 10 points from the score
       scoreNumber.innerText = score; // update the score on the page
     }
   });
@@ -175,46 +177,14 @@ choices.forEach(choice => {
 
 
 
-
-
-
-
-
-// function gameOver() {
-  //   gameOverScreen.style.display = 'block';
-  //   finalScore.innerText = score;
-  // }
+function gameOver() {
+    gameOverScreen.style.display = 'block';
+    finalScore.innerText = `Your score is: ${score}`;
+    restartButton.addEventListener('click', function() {
+      location.reload();
+    });
+  }
   
-  
-  
-  // choices.forEach(choice => {   *****************
-  //   choice.addEventListener('click', event => {
-//     let selectedChoice = choice
-//     clearInterval(timer);
-//     let selectedChoice = e.target;
-//     let correct = selectedChoice.dataset['correct'] === 'true';
-//     setStatusClass(document.body, correct);
-//     Array.from(choices).forEach(choice => {
-//       setStatusClass(choice, choice.dataset['correct'] === 'true');
-//     });
-//     if (correct) {
-//       score += 10;
-//       scoreNumber.innerText = score;
-//       nextQuestion();
-//     } else {
-//       score -= 10;
-//       scoreNumber.innerText = score;
-//       gameOver();
-//     }
-//   });
-// // });
-
-
-
-
-
-
-
 
 
 
