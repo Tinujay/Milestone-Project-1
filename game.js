@@ -1,29 +1,3 @@
-// Define a variable to store the current question number, and a variable to store the user's score.
-// Create an array of objects to represent the trivia questions, each containing the question text, a list of possible answers, and the correct answer.
-// Write a function to display the current question and answer choices to the user.
-// Add event listeners to the answer choices to allow the user to select an answer.
-// Write a function to handle the user's selection and check if it is correct. If the answer is correct, increment the user's score and move on to the next question. If the answer is incorrect, display a message to the user and move on to the next question.
-// When the game is finished, display the user's final score to them.
-  
-  
-
-
-
-
-let question = document.querySelector('#question');
-let choices = document.querySelectorAll('.choice-txt')
-let scoreNumber = document.querySelector('#score');
-
-
-let gameOverScreen = document.querySelector('#game-over');
-let finalScore = document.querySelector('#final-score');
-let restartButton = document.querySelector('#restart-button');
-let time = document.querySelector('#timer');
-
-
-let score = 0;
-
-
 let questions = [
     {
         question: 'Which fast food restaurant has the largest number of retail locations in the world?',
@@ -108,78 +82,152 @@ let questions = [
         choice4: 'Iron',
         correctChoice: 'Diamond'
         },      
-            
-    ]  
-
-
-    let currentQuestionIndex = 0
-    let currentQuestion = questions[currentQuestionIndex] //index of each array 
-
-    question.innerText = currentQuestion.question
-
-    choices.forEach(choice => {
-    let number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
-    })
-    
-
-    startTimer()
-
-
-    choices.forEach(choice => {
-        choice.addEventListener('click', event => {
-          let selectedChoice = choice.innerText;
-          if (selectedChoice === currentQuestion.correctChoice) {
-            choice.classList.add('correct');
-            score = Number(score); // convert score to a number
-            score += 10; // add 5 points to the score
-            nextQuestion(); // proceed to the next question
-          } else {
-            // highlight the choice in red for incorrect answer
-            choice.classList.add('incorrect');
-            score = Number(score); // convert score to a number
-            score -= 10; // subtract 5 points from the score
-          }
-          scoreNumber.innerText = score; // update the score on the page
-        });
-      });
-
-
-    
+]  
       
-      function startTimer() {              
-        let timer = 10; // set the timer to 10 seconds
-        let timerInterval = setInterval(function() {
-          timer--; // decrement the timer by 1 second
-          time.innerText = `Time remaining: ${timer} seconds`;
-          if (timer === 0) {
-            clearInterval(timerInterval); // stop the timer
-            nextQuestion(); // proceed to the next question
-          }
-        }, 1000); // run the timer function every 1 second
-      }
 
+
+let score = 0;
+let currentQuestionIndex = 0;
+      
+      
+const question = document.querySelector('#question');
+const choices = document.querySelectorAll('.choice-txt');
+const time = document.querySelector('#timer');
+const scoreNumber = document.querySelector('.scoreNumber');
+const gameOverScreen = document.querySelector('#game-over');
+const finalScore = document.querySelector('#final-score');
+
+
+let currentQuestion = questions[currentQuestionIndex];
 
       
-      function nextQuestion() {
-        currentQuestionIndex++; // move to the next question
-        if (currentQuestionIndex === questions.length) {
-          // all questions have been displayed, show the game over screen
-          gameOverScreen.style.display = 'block';
-          finalScore.innerText = `Your final score is ${score}`;
-        } else {
-          // display the next question
-          currentQuestion = questions[currentQuestionIndex];
-          question.innerText = currentQuestion.question;
-          choices.forEach(choice => {
-            let number = choice.dataset['number'];
-            choice.innerText = currentQuestion['choice' + number];
-            choice.classList.remove('correct', 'incorrect');
-          });
-          
-          startTimer()// start the timer for the next question
-        }
-      }
+
+
+let timerInterval;
+
+function displayQuestion() {
+  choices.forEach(choice =>
+    choice.classList.remove('incorrect'));
+    question.innerText = currentQuestion.question;
+    choices.forEach(choice => {
+    let number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number];
+  });
+  // start the timer
+  let timer = 10; // set the timer to 10 seconds
+  timerInterval = setInterval(function() {
+    timer--; // decrement the timer by 1 second
+    time.innerText = `Time remaining: ${timer} seconds`;
+    if (timer === 0) {
+      clearInterval(timerInterval); // stop the timer
+      nextQuestion(); // proceed to the next question
+    }
+  }, 1000); // run the timer function every 1 second
+
+}
+displayQuestion()
+
+
+
+
+
+function nextQuestion() {
+  clearInterval(timerInterval); // stop the timer
+  choices.forEach(choice => {
+  choice.classList.remove('incorrect');
+  choice.classList.remove('correct');
+  }); // clear the incorrect class from the choices
+  document.querySelector('#result').innerText = ""; // clear the incorrect/correct result text
+  currentQuestionIndex++; // increment the current question index
+  currentQuestion = questions[currentQuestionIndex];
+  if (currentQuestionIndex < questions.length) {
+    // if there are more questions, display the next question
+    displayQuestion();
+  } else {
+    // if there are no more questions, show the game over screen
+    gameOverScreen.classList.remove('d-none');
+    finalScore.innerText = score;
+  }
+}
+
+choices.forEach(choice => {  
+  choice.addEventListener('click', event => {
+    let selectedChoice = choice.innerText;
+    if (selectedChoice === currentQuestion.correctChoice) {
+      choice.classList.add('correct');
+      document.querySelector('#result').innerText = "Correct!";
+      score = Number(score); // convert score to a number
+      score += 10; // add 10 points to the score
+      scoreNumber.innerText = score; //updates the score on screen 
+      setTimeout(function(){
+        nextQuestion(); // proceed to the next question with a delay
+      }, 1000);
+    } else {
+      // highlight the choice in red for incorrect answer
+      choice.classList.add('incorrect');
+      document.querySelector('#result').innerText = "Incorrect!";
+      score = Number(score); // convert score to a number
+      score -= 10; // subtract 10 points from the score
+      scoreNumber.innerText = score; // update the score on the page
+    }
+  });
+});
+
+
+
+
+
+
+
+
+// function gameOver() {
+  //   gameOverScreen.style.display = 'block';
+  //   finalScore.innerText = score;
+  // }
+  
+  
+  
+  // choices.forEach(choice => {   *****************
+  //   choice.addEventListener('click', event => {
+//     let selectedChoice = choice
+//     clearInterval(timer);
+//     let selectedChoice = e.target;
+//     let correct = selectedChoice.dataset['correct'] === 'true';
+//     setStatusClass(document.body, correct);
+//     Array.from(choices).forEach(choice => {
+//       setStatusClass(choice, choice.dataset['correct'] === 'true');
+//     });
+//     if (correct) {
+//       score += 10;
+//       scoreNumber.innerText = score;
+//       nextQuestion();
+//     } else {
+//       score -= 10;
+//       scoreNumber.innerText = score;
+//       gameOver();
+//     }
+//   });
+// // });
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+  
+
+
+
+
+
       
 
   

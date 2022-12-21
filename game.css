@@ -117,7 +117,13 @@ h1 {
     padding: 20px;
   }
  
-  
+  #result {
+    color: white;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 20%;
+    right: 25%
+  }
   
   
   
