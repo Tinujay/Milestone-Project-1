@@ -114,7 +114,7 @@ function displayQuestion() {
     choice.innerText = currentQuestion['choice' + number];
   });
   // start the timer
-  let timer = 10; // set the timer to 10 seconds
+  let timer = 15; // set the timer to 10 seconds
   timerInterval = setInterval(function() {
     timer--; // decrement the timer by 1 second
     time.innerText = `Time remaining: ${timer} seconds`;
